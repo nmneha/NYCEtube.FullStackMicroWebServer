@@ -48,6 +48,9 @@ public class CacheConfiguration {
             createCache(cm, com.nyce.tube.domain.User.class.getName());
             createCache(cm, com.nyce.tube.domain.Authority.class.getName());
             createCache(cm, com.nyce.tube.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.nyce.tube.domain.Videos.class.getName());
+            createCache(cm, com.nyce.tube.domain.Videos.class.getName() + ".comments");
+            createCache(cm, com.nyce.tube.domain.Comment.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
