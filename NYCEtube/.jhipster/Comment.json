@@ -21,6 +21,14 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "comment",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "videosId",
       "otherEntityName": "videos",
       "otherEntityRelationshipName": "comment",
       "relationshipName": "videos",

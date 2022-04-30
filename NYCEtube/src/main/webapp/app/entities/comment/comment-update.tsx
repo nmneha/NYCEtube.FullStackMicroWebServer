@@ -8,6 +8,8 @@ import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateT
 import { mapIdList } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
+import { IUser } from 'app/shared/model/user.model';
+import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
 import { IVideos } from 'app/shared/model/videos.model';
 import { getEntities as getVideos } from 'app/entities/videos/videos.reducer';
 import { IComment } from 'app/shared/model/comment.model';
@@ -18,6 +20,7 @@ export const CommentUpdate = (props: RouteComponentProps<{ id: string }>) => {
 
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
+  const users = useAppSelector(state => state.userManagement.users);
   const videos = useAppSelector(state => state.videos.entities);
   const commentEntity = useAppSelector(state => state.comment.entity);
   const loading = useAppSelector(state => state.comment.loading);
@@ -34,6 +37,7 @@ export const CommentUpdate = (props: RouteComponentProps<{ id: string }>) => {
       dispatch(getEntity(props.match.params.id));
     }
 
+    dispatch(getUsers({}));
     dispatch(getVideos({}));
   }, []);
 
@@ -49,6 +53,7 @@ export const CommentUpdate = (props: RouteComponentProps<{ id: string }>) => {
     const entity = {
       ...commentEntity,
       ...values,
+      user: users.find(it => it.id.toString() === values.user.toString()),
       videos: videos.find(it => it.id.toString() === values.videos.toString()),
     };
 
@@ -67,6 +72,7 @@ export const CommentUpdate = (props: RouteComponentProps<{ id: string }>) => {
       : {
           ...commentEntity,
           date: convertDateTimeFromServer(commentEntity.date),
+          user: commentEntity?.user?.id,
           videos: commentEntity?.videos?.id,
         };
 
@@ -95,12 +101,22 @@ export const CommentUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 placeholder="YYYY-MM-DD HH:mm"
               />
               <ValidatedField label="Text" id="comment-text" name="text" data-cy="text" type="text" />
+              <ValidatedField id="comment-user" name="user" data-cy="user" label="User" type="select">
+                <option value="" key="0" />
+                {users
+                  ? users.map(otherEntity => (
+                      <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.login}
+                      </option>
+                    ))
+                  : null}
+              </ValidatedField>
               <ValidatedField id="comment-videos" name="videos" data-cy="videos" label="Videos" type="select">
                 <option value="" key="0" />
                 {videos
                   ? videos.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
+                        {otherEntity.videosId}
                       </option>
                     ))
                   : null}

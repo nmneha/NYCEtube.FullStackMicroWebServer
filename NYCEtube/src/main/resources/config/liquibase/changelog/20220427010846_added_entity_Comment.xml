@@ -20,6 +20,9 @@
             <column name="text" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <column name="videos_id" type="bigint">
                 <constraints nullable="true" />
             </column>

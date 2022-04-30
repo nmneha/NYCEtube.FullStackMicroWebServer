@@ -19,6 +19,11 @@
       "fieldName": "video",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "categories",
+      "fieldType": "Categories",
+      "fieldValues": "ARTSCRAFTS (ArtsCrafts),FASHIONBEAUTY (FashionBeauty),FOOD (Food),GAMING (Gaming),KIDS (Kids),LEARNING (Learning),MOVIESTV (MoviesShows),MUSIC (Music),NEWS (News),PEOPLEBLOGS (PeopleBlogs),PETSANIMALS (PetsAnimals),SCITECH (ScienceTechnology),SPORTS (Sports),TRAVEL (Travel)"
     }
   ],
   "fluentMethods": true,
@@ -28,11 +33,11 @@
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityField": "videoId",
-      "otherEntityName": "comment",
+      "otherEntityField": "login",
+      "otherEntityName": "user",
       "otherEntityRelationshipName": "videos",
-      "relationshipName": "comment",
-      "relationshipType": "one-to-many"
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
     }
   ],
   "service": "serviceImpl"

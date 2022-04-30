@@ -34,8 +34,10 @@ export const CommentDetail = (props: RouteComponentProps<{ id: string }>) => {
             <span id="text">Text</span>
           </dt>
           <dd>{commentEntity.text}</dd>
+          <dt>User</dt>
+          <dd>{commentEntity.user ? commentEntity.user.login : ''}</dd>
           <dt>Videos</dt>
-          <dd>{commentEntity.videos ? commentEntity.videos.id : ''}</dd>
+          <dd>{commentEntity.videos ? commentEntity.videos.videosId : ''}</dd>
         </dl>
         <Button tag={Link} to="/comment" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>

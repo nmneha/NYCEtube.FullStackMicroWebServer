@@ -8,7 +8,10 @@ import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateT
 import { mapIdList } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
+import { IUser } from 'app/shared/model/user.model';
+import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
 import { IVideos } from 'app/shared/model/videos.model';
+import { Categories } from 'app/shared/model/enumerations/categories.model';
 import { getEntity, updateEntity, createEntity, reset } from './videos.reducer';
 
 export const VideosUpdate = (props: RouteComponentProps<{ id: string }>) => {
@@ -16,10 +19,12 @@ export const VideosUpdate = (props: RouteComponentProps<{ id: string }>) => {
 
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
+  const users = useAppSelector(state => state.userManagement.users);
   const videosEntity = useAppSelector(state => state.videos.entity);
   const loading = useAppSelector(state => state.videos.loading);
   const updating = useAppSelector(state => state.videos.updating);
   const updateSuccess = useAppSelector(state => state.videos.updateSuccess);
+  const categoriesValues = Object.keys(Categories);
   const handleClose = () => {
     props.history.push('/videos');
   };
@@ -30,6 +35,8 @@ export const VideosUpdate = (props: RouteComponentProps<{ id: string }>) => {
     } else {
       dispatch(getEntity(props.match.params.id));
     }
+
+    dispatch(getUsers({}));
   }, []);
 
   useEffect(() => {
@@ -44,6 +51,7 @@ export const VideosUpdate = (props: RouteComponentProps<{ id: string }>) => {
     const entity = {
       ...videosEntity,
       ...values,
+      user: users.find(it => it.id.toString() === values.user.toString()),
     };
 
     if (isNew) {
@@ -59,8 +67,10 @@ export const VideosUpdate = (props: RouteComponentProps<{ id: string }>) => {
           date: displayDefaultDateTime(),
         }
       : {
+          categories: 'ARTSCRAFTS',
           ...videosEntity,
           date: convertDateTimeFromServer(videosEntity.date),
+          user: videosEntity?.user?.id,
         };
 
   return (
@@ -99,6 +109,23 @@ export const VideosUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 placeholder="YYYY-MM-DD HH:mm"
               />
               <ValidatedBlobField label="Video" id="videos-video" name="video" data-cy="video" openActionLabel="Open" />
+              <ValidatedField label="Categories" id="videos-categories" name="categories" data-cy="categories" type="select">
+                {categoriesValues.map(categories => (
+                  <option value={categories} key={categories}>
+                    {categories}
+                  </option>
+                ))}
+              </ValidatedField>
+              <ValidatedField id="videos-user" name="user" data-cy="user" label="User" type="select">
+                <option value="" key="0" />
+                {users
+                  ? users.map(otherEntity => (
+                      <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.login}
+                      </option>
+                    ))
+                  : null}
+              </ValidatedField>
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/videos" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

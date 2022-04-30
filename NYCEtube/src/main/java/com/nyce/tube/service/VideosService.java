@@ -3,6 +3,8 @@ package com.nyce.tube.service;
 import com.nyce.tube.domain.Videos;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * Service Interface for managing {@link Videos}.
@@ -38,6 +40,14 @@ public interface VideosService {
      * @return the list of entities.
      */
     List<Videos> findAll();
+
+    /**
+     * Get all the videos with eager load of many-to-many relationships.
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    Page<Videos> findAllWithEagerRelationships(Pageable pageable);
 
     /**
      * Get the "id" videos.

@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -60,14 +62,18 @@ public class CommentServiceImpl implements CommentService {
     @Transactional(readOnly = true)
     public List<Comment> findAll() {
         log.debug("Request to get all Comments");
-        return commentRepository.findAll();
+        return commentRepository.findAllWithEagerRelationships();
+    }
+
+    public Page<Comment> findAllWithEagerRelationships(Pageable pageable) {
+        return commentRepository.findAllWithEagerRelationships(pageable);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<Comment> findOne(Long id) {
         log.debug("Request to get Comment : {}", id);
-        return commentRepository.findById(id);
+        return commentRepository.findOneWithEagerRelationships(id);
     }
 
     @Override

@@ -29,7 +29,10 @@ public class Comment implements Serializable {
     private String text;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "comments" }, allowSetters = true)
+    private User user;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "user" }, allowSetters = true)
     private Videos videos;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -71,6 +74,19 @@ public class Comment implements Serializable {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Comment user(User user) {
+        this.setUser(user);
+        return this;
     }
 
     public Videos getVideos() {

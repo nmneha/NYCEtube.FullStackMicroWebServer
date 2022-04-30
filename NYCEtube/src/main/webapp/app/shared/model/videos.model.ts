@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
-import { IComment } from 'app/shared/model/comment.model';
+import { IUser } from 'app/shared/model/user.model';
+import { Categories } from 'app/shared/model/enumerations/categories.model';
 
 export interface IVideos {
   id?: number;
@@ -7,7 +8,8 @@ export interface IVideos {
   date?: string | null;
   videoContentType?: string | null;
   video?: string | null;
-  comments?: IComment[] | null;
+  categories?: Categories | null;
+  user?: IUser | null;
 }
 
 export const defaultValue: Readonly<IVideos> = {};

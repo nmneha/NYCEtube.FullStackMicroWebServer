@@ -49,6 +49,12 @@ export const VideosDetail = (props: RouteComponentProps<{ id: string }>) => {
               </div>
             ) : null}
           </dd>
+          <dt>
+            <span id="categories">Categories</span>
+          </dt>
+          <dd>{videosEntity.categories}</dd>
+          <dt>User</dt>
+          <dd>{videosEntity.user ? videosEntity.user.login : ''}</dd>
         </dl>
         <Button tag={Link} to="/videos" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>

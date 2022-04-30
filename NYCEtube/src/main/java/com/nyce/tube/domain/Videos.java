@@ -1,10 +1,8 @@
 package com.nyce.tube.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.nyce.tube.domain.enumeration.Categories;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
@@ -40,10 +38,12 @@ public class Videos implements Serializable {
     @Column(name = "video_content_type")
     private String videoContentType;
 
-    @OneToMany(mappedBy = "videos")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "videos" }, allowSetters = true)
-    private Set<Comment> comments = new HashSet<>();
+    @Enumerated(EnumType.STRING)
+    @Column(name = "categories")
+    private Categories categories;
+
+    @ManyToOne
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -112,34 +112,29 @@ public class Videos implements Serializable {
         this.videoContentType = videoContentType;
     }
 
-    public Set<Comment> getComments() {
-        return this.comments;
+    public Categories getCategories() {
+        return this.categories;
     }
 
-    public void setComments(Set<Comment> comments) {
-        if (this.comments != null) {
-            this.comments.forEach(i -> i.setVideos(null));
-        }
-        if (comments != null) {
-            comments.forEach(i -> i.setVideos(this));
-        }
-        this.comments = comments;
-    }
-
-    public Videos comments(Set<Comment> comments) {
-        this.setComments(comments);
+    public Videos categories(Categories categories) {
+        this.setCategories(categories);
         return this;
     }
 
-    public Videos addComment(Comment comment) {
-        this.comments.add(comment);
-        comment.setVideos(this);
-        return this;
+    public void setCategories(Categories categories) {
+        this.categories = categories;
     }
 
-    public Videos removeComment(Comment comment) {
-        this.comments.remove(comment);
-        comment.setVideos(null);
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Videos user(User user) {
+        this.setUser(user);
         return this;
     }
 
@@ -171,6 +166,7 @@ public class Videos implements Serializable {
             ", date='" + getDate() + "'" +
             ", video='" + getVideo() + "'" +
             ", videoContentType='" + getVideoContentType() + "'" +
+            ", categories='" + getCategories() + "'" +
             "}";
     }
 }

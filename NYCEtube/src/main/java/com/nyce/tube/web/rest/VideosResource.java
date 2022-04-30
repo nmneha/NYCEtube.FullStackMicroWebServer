@@ -135,10 +135,11 @@ public class VideosResource {
     /**
      * {@code GET  /videos} : get all the videos.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of videos in body.
      */
     @GetMapping("/videos")
-    public List<Videos> getAllVideos() {
+    public List<Videos> getAllVideos(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Videos");
         return videosService.findAll();
     }

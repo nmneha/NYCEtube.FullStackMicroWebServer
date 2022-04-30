@@ -49,6 +49,8 @@ export const Videos = (props: RouteComponentProps<{ url: string }>) => {
                 <th>Name</th>
                 <th>Date</th>
                 <th>Video</th>
+                <th>Categories</th>
+                <th>User</th>
                 <th />
               </tr>
             </thead>
@@ -72,6 +74,8 @@ export const Videos = (props: RouteComponentProps<{ url: string }>) => {
                       </div>
                     ) : null}
                   </td>
+                  <td>{videos.categories}</td>
+                  <td>{videos.user ? videos.user.login : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/videos/${videos.id}`} color="info" size="sm" data-cy="entityDetailsButton">

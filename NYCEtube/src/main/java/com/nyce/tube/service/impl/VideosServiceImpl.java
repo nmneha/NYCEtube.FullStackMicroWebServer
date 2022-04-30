@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,6 +58,9 @@ public class VideosServiceImpl implements VideosService {
                 if (videos.getVideoContentType() != null) {
                     existingVideos.setVideoContentType(videos.getVideoContentType());
                 }
+                if (videos.getCategories() != null) {
+                    existingVideos.setCategories(videos.getCategories());
+                }
 
                 return existingVideos;
             })
@@ -66,14 +71,18 @@ public class VideosServiceImpl implements VideosService {
     @Transactional(readOnly = true)
     public List<Videos> findAll() {
         log.debug("Request to get all Videos");
-        return videosRepository.findAll();
+        return videosRepository.findAllWithEagerRelationships();
+    }
+
+    public Page<Videos> findAllWithEagerRelationships(Pageable pageable) {
+        return videosRepository.findAllWithEagerRelationships(pageable);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<Videos> findOne(Long id) {
         log.debug("Request to get Videos : {}", id);
-        return videosRepository.findById(id);
+        return videosRepository.findOneWithEagerRelationships(id);
     }
 
     @Override

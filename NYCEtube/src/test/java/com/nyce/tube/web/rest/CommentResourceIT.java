@@ -3,24 +3,32 @@ package com.nyce.tube.web.rest;
 import static com.nyce.tube.web.rest.TestUtil.sameInstant;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.nyce.tube.IntegrationTest;
 import com.nyce.tube.domain.Comment;
 import com.nyce.tube.repository.CommentRepository;
+import com.nyce.tube.service.CommentService;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -30,6 +38,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Integration tests for the {@link CommentResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class CommentResourceIT {
@@ -48,6 +57,12 @@ class CommentResourceIT {
 
     @Autowired
     private CommentRepository commentRepository;
+
+    @Mock
+    private CommentRepository commentRepositoryMock;
+
+    @Mock
+    private CommentService commentServiceMock;
 
     @Autowired
     private EntityManager em;
@@ -133,6 +148,24 @@ class CommentResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(comment.getId().intValue())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
             .andExpect(jsonPath("$.[*].text").value(hasItem(DEFAULT_TEXT)));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllCommentsWithEagerRelationshipsIsEnabled() throws Exception {
+        when(commentServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restCommentMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(commentServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllCommentsWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(commentServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restCommentMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(commentServiceMock, times(1)).findAllWithEagerRelationships(any());
     }
 
     @Test
