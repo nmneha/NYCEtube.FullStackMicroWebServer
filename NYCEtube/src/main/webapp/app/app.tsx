@@ -1,6 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css';
 import './app.scss';
 import 'app/config/dayjs.ts';
+//The default app before I erased everything to follow the video.
 
 import React, { useEffect } from 'react';
 import { Card } from 'reactstrap';
