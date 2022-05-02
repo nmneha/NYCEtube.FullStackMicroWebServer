@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-// import "node_modules/video-react/dist/video-react.css";
-import { Player } from 'video-react';
+import VideoPlayer from 'react-video-js-player';
+
 
 class VideoApp extends Component {
     player = {}
     state = {
         video: {
-            src: 'src/main/webapp/content/videosample/sora',
+            src: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
             poster: '/webapp/content/images/jhipster_family_member_0_head-192.png'
         }
     }
@@ -18,7 +18,16 @@ class VideoApp extends Component {
     render() {
         return (
             <div>
-          
+           <VideoPlayer
+                    controls={true}
+                    src={this.state.video.src}
+                    poster={this.state.video.poster}
+                    width="720"
+                    height="420"
+                    onReady={this.onPlayerReady.bind(this)}
+                    type="video/mp4"
+                />
+                </div>
     }
 }
 export default VideoApp;
