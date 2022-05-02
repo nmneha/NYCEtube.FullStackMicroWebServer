@@ -5,7 +5,7 @@ class VideoApp extends Component {
     player = {}
     state = {
         video: {
-            src: 'src/main/webapp/content/videosample/sora',
+            src: "https://www.youtube.com/watch?v=Rd836cv4QwA",
             poster: '/webapp/content/images/jhipster_family_member_0_head-192.png'
         }
     }
