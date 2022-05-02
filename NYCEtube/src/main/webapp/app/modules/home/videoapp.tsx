@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import VideoPlayer from 'react-video-js-player';
-
+import { Player } from 'video-react';
 
 class VideoApp extends Component {
     player = {}
@@ -28,6 +28,7 @@ class VideoApp extends Component {
                     type="video/mp4"
                 />
                 </div>
+        );
     }
 }
 export default VideoApp;
