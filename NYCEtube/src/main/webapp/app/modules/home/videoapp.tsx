@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import VideoPlayer from 'react-video-js-player';
+// import "node_modules/video-react/dist/video-react.css";
+import { Player } from 'video-react';
 
 class VideoApp extends Component {
     player = {}
@@ -17,17 +18,7 @@ class VideoApp extends Component {
     render() {
         return (
             <div>
-                <VideoPlayer
-                    controls={true}
-                    src={this.state.video.src}
-                    poster={this.state.video.poster}
-                    width="720"
-                    height="420"
-                    onReady={this.onPlayerReady.bind(this)}
-                    type="video/mp4"
-                />
-            </div>
-        );
+          
     }
 }
 export default VideoApp;
