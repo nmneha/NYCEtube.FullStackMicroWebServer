@@ -1,20 +1,29 @@
 import './home.scss';
 
-import React from 'react';
+import React, { Component } from 'react';
+import ReactPlayer from 'react';
 import { Link } from 'react-router-dom';
 
 import { Row, Col, Alert } from 'reactstrap';
 
 import { useAppSelector } from 'app/config/store';
+import VideoApp from '../home/videoapp';
+import { VideoPlayer } from 'react-video-js-player';
+import VideoJS from '../home/videojs';
 
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
+
 
   return (
     <Row>
       <Col md="3" className="pad">
         <span className="hipster rounded" />
       </Col>
+      <div>
+        <VideoJS/>
+        <VideoApp/>
+      </div>
       <Col md="9">
         <p></p>
         <p></p>
@@ -46,7 +55,6 @@ export const Home = () => {
             </Alert>
           </div>
         )}
-
 
       </Col>
     </Row>

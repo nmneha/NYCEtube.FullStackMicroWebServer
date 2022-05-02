@@ -23,6 +23,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/main/webapp/app"],
+  "include": ["src/main/webapp/app", "upload.js", "getVideo.js"],
   "exclude": ["node_modules"]
 }
