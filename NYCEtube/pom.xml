@@ -9,7 +9,7 @@
     <artifactId>nyc-etube</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>NYC Etube</name>
+    <name>NYCEtube</name>
     <description>Description for NYCEtube</description>
 
     <repositories>
@@ -102,10 +102,26 @@
                 <scope>import</scope>
             </dependency>
             <!-- jhipster-needle-maven-add-dependency-management -->
+                <dependency>
+                    <groupId>software.amazon.awssdk</groupId>
+                    <artifactId>bom</artifactId>
+                    <version>2.2.0</version>
+                    <type>pom</type>
+                    <scope>import</scope>
+                </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>1.11.18</version>
+        </dependency>
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>s3</artifactId>
+        </dependency>
         <dependency>
             <groupId>tech.jhipster</groupId>
             <artifactId>jhipster-framework</artifactId>

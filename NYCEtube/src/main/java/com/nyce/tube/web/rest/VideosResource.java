@@ -37,6 +37,8 @@ public class VideosResource {
 
     private final VideosRepository videosRepository;
 
+    
+
     public VideosResource(VideosService videosService, VideosRepository videosRepository) {
         this.videosService = videosService;
         this.videosRepository = videosRepository;
@@ -138,10 +140,16 @@ public class VideosResource {
      * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of videos in body.
      */
+    // @GetMapping("/videos")
+    // public List<Videos> getAllVideos(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    //     log.debug("REST request to get all Videos");
+    //     return videosService.findAll();
+    // }
+
     @GetMapping("/videos")
-    public List<Videos> getAllVideos(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<Videos> getAllVideosByUser(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Videos");
-        return videosService.findAll();
+        return videosService.findAllByUser();
     }
 
     /**
