@@ -16,8 +16,8 @@ import java.time.Instant;
 public class BucketService {
 
 
-
-        public String preSignedUrlGenerator(String keyName) {
+    public static void main(String[] args) {
+//        public String preSignedUrlGenerator(String keyName) {
             Regions clientRegion = Regions.US_EAST_1;
             String bucketName = "zcw-cohort8zero";
             String objectKey = "videoapp/sora1.mp4";
@@ -31,7 +31,7 @@ public class BucketService {
                 // Set the presigned URL to expire after one hour.
                 java.util.Date expiration = new java.util.Date();
                 long expTimeMillis = Instant.now().toEpochMilli();
-                expTimeMillis += 1000 * 60 * 60;
+                expTimeMillis += 1000 * 60 * 60 * 60;
                 expiration.setTime(expTimeMillis);
 
                 // Generate the presigned URL.
@@ -42,7 +42,7 @@ public class BucketService {
                         .withExpiration(expiration);
                 URL url = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
                 System.out.println("Pre-Signed URL: " + url.toString());
-                return url.toString();
+//                return url.toString();
             } catch (AmazonServiceException e) {
                 // The call was transmitted successfully, but Amazon S3 couldn't process
                 // it, so it returned an error response.
@@ -53,7 +53,7 @@ public class BucketService {
                 e.printStackTrace();
             }
 
-            return ("Video cannot be found");
+//            return ("Video cannot be found");
         }
 
 
