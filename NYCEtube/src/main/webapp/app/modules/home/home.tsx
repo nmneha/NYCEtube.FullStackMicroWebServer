@@ -23,8 +23,8 @@ export const Home = (ReactElement) => {
         <span className="hipster rounded" />
       </Col>
       <Col md="9">
-        <p></p>
-        <p></p>
+        <p>
+        </p>
         <h2>Welcome, NYCEtube!</h2>
         <p className="lead">NYCE to see you ^_^</p>
         {account?.login ? (
