@@ -9,7 +9,7 @@
     <artifactId>nyc-etube</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>NYC Etube</name>
+    <name>NYCEtube</name>
     <description>Description for NYCEtube</description>
 
     <repositories>
