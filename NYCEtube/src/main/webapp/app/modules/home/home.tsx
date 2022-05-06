@@ -2,7 +2,7 @@ import './home.scss';
 
 import React, { Component } from 'react';
 import ReactPlayer from 'react';
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 
 import { Row, Col, Alert } from 'reactstrap';
 
@@ -11,19 +11,20 @@ import VideoApp from '../home/videoapp';
 import { VideoPlayer } from 'react-video-js-player';
 import VideoJS from '../home/videojs';
 import Player from 'video-react';
+import {VideosUser} from 'app/entities/videos-user/videos-user';
 
-export const Home = () => {
+export const Home = (ReactElement) => {
   const account = useAppSelector(state => state.authentication.account);
 
-
+  // const VideoUser = (props: RouteComponentProps<{ url: string }>) => {
   return (
     <Row>
       <Col md="3" className="pad">
         <span className="hipster rounded" />
       </Col>
       <Col md="9">
-        <p></p>
-        <p></p>
+        <p>
+        </p>
         <h2>Welcome, NYCEtube!</h2>
         <p className="lead">NYCE to see you ^_^</p>
         {account?.login ? (
@@ -37,9 +38,15 @@ export const Home = () => {
          <div>
         <VideoApp/>
       </div>
+      <div>
+      
+        {/* <VideosUser {...props} /> */}
+        
+      </div>
       </Col>
     </Row>
   );
 };
+// }
 
 export default Home;

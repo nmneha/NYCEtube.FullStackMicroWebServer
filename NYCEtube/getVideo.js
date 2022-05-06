@@ -8,7 +8,7 @@ const config = require('./tsconfig.json');
 
 const s3 = new AWS.S3();
 
-// require('dotenv').config();
+require('dotenv').config();
 
 // console.log(process.env);
 
@@ -39,10 +39,10 @@ function getVideo(videoName) {
 
 }
 
-// {
-// console.log(getVideo("videoapp/sora1.mp4"));
-// }
-// }
+{
+console.log(getVideo("videoapp/sora1.mp4"));
+}
+// 
 // export default getVideo;
 
 // https://zcw-cohort8zero.s3.amazonaws.com/videoapp/sora.mp4 <--- url
