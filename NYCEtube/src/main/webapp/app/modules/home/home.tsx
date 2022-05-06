@@ -10,7 +10,6 @@ import { useAppSelector } from 'app/config/store';
 import VideoApp from '../home/videoapp';
 import { VideoPlayer } from 'react-video-js-player';
 import VideoJS from '../home/videojs';
-import Player from 'video-react';
 
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);

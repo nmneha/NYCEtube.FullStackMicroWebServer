@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import VideoPlayer from 'react-video-js-player';
-import { Player } from 'video-react';
 
 class VideoApp extends Component {
     player = {}
     state = {
         video: {
-
-            src: "https://www.youtube.com/watch?v=Rd836cv4QwA",
 
             src: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
 
