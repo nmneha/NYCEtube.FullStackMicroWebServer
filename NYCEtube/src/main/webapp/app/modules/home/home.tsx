@@ -1,7 +1,6 @@
 import './home.scss';
 
 import React, { Component } from 'react';
-import ReactPlayer from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 
 import { Row, Col, Alert } from 'reactstrap';
@@ -9,8 +8,6 @@ import { Row, Col, Alert } from 'reactstrap';
 import { useAppSelector } from 'app/config/store';
 import VideoApp from '../home/videoapp';
 import { VideoPlayer } from 'react-video-js-player';
-import VideoJS from '../home/videojs';
-import Player from 'video-react';
 import {VideosUser} from 'app/entities/videos-user/videos-user';
 
 export const Home = (ReactElement) => {
