@@ -31,7 +31,7 @@ public class BucketService {
                 // Set the presigned URL to expire after one hour.
                 java.util.Date expiration = new java.util.Date();
                 long expTimeMillis = Instant.now().toEpochMilli();
-                expTimeMillis += 1000 * 60 * 60 * 60;
+                expTimeMillis += 604799999;
                 expiration.setTime(expTimeMillis);
 
                 // Generate the presigned URL.
