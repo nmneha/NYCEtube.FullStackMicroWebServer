@@ -14,6 +14,7 @@ import { APP_DATE_FORMAT } from 'app/config/constants';
 import { TextFormat, openFile, byteSize } from 'react-jhipster';
 import { getEntities } from 'app/entities/videos/videos.reducer';
 
+
 export const Home = (ReactElement) => {
   const account = useAppSelector(state => state.authentication.account);
   const videosList = useAppSelector(state => state.videos.entities);
