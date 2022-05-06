@@ -24,7 +24,7 @@ import VideoPlayer from 'react-video-js-player';
     render() {
         return (
             <div>
-                <VideoPlayer
+           <VideoPlayer
                     controls={true}
                     src={this.state.video.src}
                     poster={this.state.video.poster}
@@ -33,7 +33,7 @@ import VideoPlayer from 'react-video-js-player';
                     onReady={this.onPlayerReady.bind(this)}
                     type="video/mp4"
                 />
-            </div>
+                </div>
         );
     }
 }
