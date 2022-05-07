@@ -7,7 +7,7 @@ import { Row, Col, Alert, Button, Table } from 'reactstrap';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import VideoApp from '../home/videoapp';
-// import { VideoPlayer } from 'react-video-js-player';
+import { VideoPlayer } from 'react-video-js-player';
 import {VideosUser} from 'app/entities/videos-user/videos-user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { APP_DATE_FORMAT } from 'app/config/constants';
@@ -53,16 +53,14 @@ export const Home = (ReactElement) => {
           </div>
         )}
          <div>
-        {/* <VideoApp/> */}
+        <VideoApp/>
 
-        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; child-src 'https://zcw-cohort8zero.s3.amazonaws.com'; object-src 'none'"/>
+        {/* <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; child-src 'https://zcw-cohort8zero.s3.amazonaws.com'; object-src 'none'"/> */}
 
-          {/* <head> Content-Security-Policy: script-src 'self' https://zcw-cohort8zero.s3.amazonaws.com</head> */}
-        <video width="640" height="480" controls>
+        {/* <video width="640" height="480" controls>
   <source src = {url} type="video/mp4"/>
-  {/* <source src="movie.ogg" type="video/ogg"> */}
 Your browser does not support the video tag.
-</video>
+</video> */}
       </div>
       <div>
       
