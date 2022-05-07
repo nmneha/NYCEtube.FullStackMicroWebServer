@@ -33,11 +33,11 @@ export const Home = (ReactElement) => {
 
   // const VideoUser = (props: RouteComponentProps<{ url: string }>) => {
   return (
-    
+    <div className="centered">
     <Row>
-      <Col md="3" className="pad">
+      {/* <Col md="3" className="pad">
         <span className="hipster rounded" />
-      </Col>
+      </Col> */}
     
       <Col md="9">
         <p>
@@ -140,6 +140,7 @@ Your browser does not support the video tag.
     </div>
       </Col>
     </Row>
+    </div>
   );
 };
 // }
