@@ -7,7 +7,7 @@ import { Row, Col, Alert, Button, Table } from 'reactstrap';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import VideoApp from '../home/videoapp';
-import { VideoPlayer } from 'react-video-js-player';
+// import { VideoPlayer } from 'react-video-js-player';
 import {VideosUser} from 'app/entities/videos-user/videos-user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { APP_DATE_FORMAT } from 'app/config/constants';
@@ -19,6 +19,7 @@ export const Home = (ReactElement) => {
   const videosList = useAppSelector(state => state.videos.entities);
   const loading = useAppSelector(state => state.videos.loading);
   const dispatch = useAppDispatch();
+  const url = "https://zcw-cohort8zero.s3.amazonaws.com/videoapp/sora1.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220506T020228Z&X-Amz-SignedHeaders=host&X-Amz-Expires=215999&X-Amz-Credential=AKIAUTLWJ537YFVAWF46%2F20220506%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=8632b5367d02ae706ac3c7023e530274f9375385615b2e1a00495ed3d0a0ca2e";
 
   useEffect(() => {
     dispatch(getEntities({}));
@@ -32,10 +33,12 @@ export const Home = (ReactElement) => {
 
   // const VideoUser = (props: RouteComponentProps<{ url: string }>) => {
   return (
+    
     <Row>
       <Col md="3" className="pad">
         <span className="hipster rounded" />
       </Col>
+    
       <Col md="9">
         <p>
         </p>
@@ -50,7 +53,16 @@ export const Home = (ReactElement) => {
           </div>
         )}
          <div>
-        <VideoApp/>
+        {/* <VideoApp/> */}
+
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; child-src 'https://zcw-cohort8zero.s3.amazonaws.com'; object-src 'none'"/>
+
+          {/* <head> Content-Security-Policy: script-src 'self' https://zcw-cohort8zero.s3.amazonaws.com</head> */}
+        <video width="640" height="480" controls>
+  <source src = {url} type="video/mp4"/>
+  {/* <source src="movie.ogg" type="video/ogg"> */}
+Your browser does not support the video tag.
+</video>
       </div>
       <div>
       
