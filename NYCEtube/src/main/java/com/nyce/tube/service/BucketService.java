@@ -9,18 +9,23 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 
+import org.springframework.stereotype.Controller;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
 
+
+@Controller
 public class BucketService {
+    String key = "videoapp/sora1.mp4";
 
 
-    public static void main(String[] args) {
+    public String getUrl(String key) {
 //        public String preSignedUrlGenerator(String keyName) {
             Regions clientRegion = Regions.US_EAST_1;
             String bucketName = "zcw-cohort8zero";
-            String objectKey = "videoapp/sora1.mp4";
+            String objectKey = "videoapp/" + key;
 
             try {
                 AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
@@ -42,7 +47,8 @@ public class BucketService {
                         .withExpiration(expiration);
                 URL url = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
                 System.out.println("Pre-Signed URL: " + url.toString());
-//                return url.toString();
+
+                return url.toString();
             } catch (AmazonServiceException e) {
                 // The call was transmitted successfully, but Amazon S3 couldn't process
                 // it, so it returned an error response.
@@ -53,7 +59,7 @@ public class BucketService {
                 e.printStackTrace();
             }
 
-//            return ("Video cannot be found");
+            return ("Video cannot be found");
         }
 
 

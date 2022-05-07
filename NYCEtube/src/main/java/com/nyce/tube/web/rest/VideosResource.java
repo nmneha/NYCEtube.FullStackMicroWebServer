@@ -3,6 +3,7 @@ package com.nyce.tube.web.rest;
 import com.nyce.tube.domain.Videos;
 import com.nyce.tube.repository.VideosRepository;
 import com.nyce.tube.service.VideosService;
+import com.nyce.tube.service.BucketService;
 import com.nyce.tube.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -37,11 +38,14 @@ public class VideosResource {
 
     private final VideosRepository videosRepository;
 
+    private final BucketService bucketService;
+
     
 
-    public VideosResource(VideosService videosService, VideosRepository videosRepository) {
+    public VideosResource(VideosService videosService, VideosRepository videosRepository, BucketService bucketService) {
         this.videosService = videosService;
         this.videosRepository = videosRepository;
+        this.bucketService = bucketService;
     }
 
     /**
@@ -180,4 +184,11 @@ public class VideosResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    @GetMapping("/videos/bucket/{video}")
+    public String getVideoUrl(@PathVariable String video){
+        return bucketService.getUrl(video);
+    }
+
+
 }
