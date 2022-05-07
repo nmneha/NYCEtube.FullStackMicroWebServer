@@ -33,7 +33,7 @@ const Header = (props: IHeaderProps) => {
   return (
     <div id="app-header">
       <LoadingBar className="loading-bar" />
-      <Navbar data-cy="navbar" dark expand="md" fixed="top" className="bg-primary">
+      <Navbar data-cy="navbar" dark expand="md" fixed="top" className="background-color">
         <NavbarToggler aria-label="Menu" onClick={toggleMenu} />
         <Brand />
         <Collapse isOpen={menuOpen} navbar>
