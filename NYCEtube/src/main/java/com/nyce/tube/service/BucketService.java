@@ -16,10 +16,11 @@ import java.time.Instant;
 
 @Service
 public class BucketService {
-    String key = "sora1.mp4";
+    static String key = "sora1.mp4";
 
 
-    public String getUrl(String key) {
+    // public String getUrl(String key) {
+        public static void main(String[] args){
 //        public String preSignedUrlGenerator(String keyName) {
             Regions clientRegion = Regions.US_EAST_1;
             String bucketName = "zcw-cohort8zero";
@@ -56,7 +57,7 @@ public class BucketService {
                 e.printStackTrace();
             }
 
-            return ("Video cannot be found");
+            // return ("Video cannot be found");
         }
 
 
