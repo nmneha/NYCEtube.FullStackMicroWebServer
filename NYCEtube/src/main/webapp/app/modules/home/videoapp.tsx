@@ -16,7 +16,8 @@ import VideoPlayer from 'react-video-js-player';
         video: {
             // src: this.url,
             src: 'https://zcw-cohort8zero.s3.amazonaws.com/videoapp/sora1.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220508T182219Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604799&X-Amz-Credential=AKIAUTLWJ537YFVAWF46%2F20220508%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=256e531a89a03143e89b4f2e79c25e4e2bceacadbe4029c31e96d95dffc548bf',
-            poster: '/webapp/content/images/jhipster_family_member_0_head-192.png'
+
+            poster: 'https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg'
         }
     }
 

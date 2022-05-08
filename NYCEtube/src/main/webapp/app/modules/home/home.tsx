@@ -36,6 +36,30 @@ export const Home = (ReactElement) => {
       {/* <Col md="3" className="pad">
         <span className="hipster rounded" />
       </Col> */}
+<div className = "container" >
+  <div className="row">
+    <div className="col">video1</div>
+    <div className="col">video2</div>
+    <div className="col">video3</div>
+
+  </div>
+  <div className="row">
+    <div className="col">video4</div>
+    <div className="col">video5</div>
+    <div className="col">video6</div>
+
+  </div>
+  <div className="row">
+    <div className="col">video7</div>
+    <div className="col">video8</div>
+    <div className="col">video9</div>
+
+  </div>
+</div>
+
+
+
+
 
       <Col>
         <p>
