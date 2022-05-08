@@ -1,5 +1,7 @@
 package com.nyce.tube.web.rest;
 
+import com.amazonaws.services.waf.model.HTTPRequest;
+import com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.HttpStatus;
 import com.nyce.tube.domain.Videos;
 import com.nyce.tube.repository.VideosRepository;
 import com.nyce.tube.service.VideosService;
@@ -14,6 +16,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +37,7 @@ public class VideosResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
+    
     private final VideosService videosService;
 
     private final VideosRepository videosRepository;
@@ -41,7 +45,7 @@ public class VideosResource {
     private final BucketService bucketService;
 
     
-
+    @Autowired
     public VideosResource(VideosService videosService, VideosRepository videosRepository, BucketService bucketService) {
         this.videosService = videosService;
         this.videosRepository = videosRepository;
@@ -62,6 +66,7 @@ public class VideosResource {
             throw new BadRequestAlertException("A new videos cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Videos result = videosService.save(videos);
+        // upload to S3 and set the url field to presigned url
         return ResponseEntity
             .created(new URI("/api/videos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
@@ -185,10 +190,10 @@ public class VideosResource {
             .build();
     }
 
-    @GetMapping("/videos/bucket/{video}")
-    public String getVideoUrl(@PathVariable String video){
-        return bucketService.getUrl(video);
-    }
+    // @GetMapping("/videos/bucket/{video}")
+    // public String getVideoUrl(@PathVariable String video){
+    //     return bucketService.getUrl(video);
+    // }
 
 
 }

@@ -9,16 +9,14 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
 
-
-@Controller
+@Service
 public class BucketService {
-    String key = "videoapp/sora1.mp4";
+    String key = "sora1.mp4";
 
 
     public String getUrl(String key) {
