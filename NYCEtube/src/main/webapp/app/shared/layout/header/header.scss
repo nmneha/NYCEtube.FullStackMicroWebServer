@@ -57,11 +57,11 @@ Navbar styles
     text-decoration: none;
   }
   .brand-icon {
-    height: 35px;
+    height: 40px;
     width: auto;
     display: inline-block;
     img {
-      height: 45px;
+      height: 40px;
     }
   }
 }
@@ -82,3 +82,8 @@ Navbar styles
   top: 0px;
   z-index: 1031;
 }
+
+.background-color{
+  background-color: rgb(37, 104, 167);
+}
+
