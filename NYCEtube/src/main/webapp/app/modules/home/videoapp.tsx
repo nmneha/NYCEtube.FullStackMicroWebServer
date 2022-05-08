@@ -13,7 +13,7 @@ import VideoPlayer from 'react-video-js-player';
 
 
 
-            poster: '/webapp/content/images/jhipster_family_member_0_head-192.png'
+            poster: 'https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg'
         }
     }
 
