@@ -1,14 +1,12 @@
 import './home.scss';
 
-import React, { Component, useEffect } from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Row, Col, Alert, Button, Table } from 'reactstrap';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import VideoApp from '../home/videoapp';
-import { VideoPlayer } from 'react-video-js-player';
-import {VideosUser} from 'app/entities/videos-user/videos-user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { APP_DATE_FORMAT } from 'app/config/constants';
 import { TextFormat, openFile, byteSize } from 'react-jhipster';
