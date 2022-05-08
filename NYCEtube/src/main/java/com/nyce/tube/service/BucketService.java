@@ -9,18 +9,22 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 
-import java.io.IOException;
+import org.springframework.stereotype.Service;
+
 import java.net.URL;
 import java.time.Instant;
 
+@Service
 public class BucketService {
+    static String key = "sora1.mp4";
 
 
-    public static void main(String[] args) {
+    // public String getUrl(String key) {
+        public static void main(String[] args){
 //        public String preSignedUrlGenerator(String keyName) {
             Regions clientRegion = Regions.US_EAST_1;
             String bucketName = "zcw-cohort8zero";
-            String objectKey = "videoapp/sora1.mp4";
+            String objectKey = "videoapp/" + key;
 
             try {
                 AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
@@ -53,7 +57,7 @@ public class BucketService {
                 e.printStackTrace();
             }
 
-//            return ("Video cannot be found");
+            // return ("Video cannot be found");
         }
 
 
