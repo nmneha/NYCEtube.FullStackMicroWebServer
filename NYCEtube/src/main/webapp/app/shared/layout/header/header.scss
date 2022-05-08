@@ -1,10 +1,12 @@
-$header-color: #fff;
-$header-color-secondary: #bbb;
+$header-color: rgb(56, 56, 55);
+$header-color-secondary: rgb(208, 208, 208);
 $header-color-hover: darken($header-color, 20%);
 
 /* ==========================================================================
 Developement Ribbon
 ========================================================================== */
+
+
 .ribbon {
   background-color: rgba(170, 0, 0, 0.5);
   left: -3.5em;
@@ -15,7 +17,7 @@ Developement Ribbon
   transform: rotate(-45deg);
   overflow: hidden;
   position: absolute;
-  top: 30px;
+  top: 20px;
   white-space: nowrap;
   width: 15em;
   z-index: 99999;
@@ -57,17 +59,23 @@ Navbar styles
     text-decoration: none;
   }
   .brand-icon {
-    height: 40px;
+    height: 50px;
     width: auto;
+    padding-right: 10px;
     display: inline-block;
     img {
-      height: 40px;
+      height: 50px;
     }
   }
 }
 
 .brand-title {
-  font-size: 24px;
+  font-size: 40px;
+  vertical-align: middle;
+  @font-face {
+    font-family: 'Koulen', cursive; /*a name to be used later*/
+    src: url('https://fonts.googleapis.com/css2?family=Koulen&display=swap'); /*URL to font*/
+  }
   color: $header-color;
   &:hover {
     color: $header-color-hover;
@@ -84,6 +92,7 @@ Navbar styles
 }
 
 .background-color{
-  background-color: rgb(37, 104, 167);
+  background-color: rgba(148, 87, 72, 0.968);
+  height: 60px;
 }
 
