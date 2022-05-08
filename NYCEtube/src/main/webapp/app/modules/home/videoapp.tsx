@@ -37,6 +37,10 @@ const uri = '/videos/bucket/' + videoName;
                     onReady={this.onPlayerReady.bind(this)}
                     type="video/mp4"
                 />
+                   {/* <video width="640" height="480" controls>
+  <source src = {this.state.video.src} type="video/mp4"/>
+Your browser does not support the video tag.
+</video>       */}
                 </div>
         );
     }
