@@ -1,10 +1,11 @@
 // import { url } from 'inspector';
 import React, { Component } from 'react';
 import VideoPlayer from 'react-video-js-player';
-
+import Videos from 'url'
 
 // const videoName = "sora1.mp4";
 // const uri = '/videos/bucket/' + videoName;
+// let url = Videos.URL
 
     class VideoApp extends Component {
        
@@ -12,17 +13,23 @@ import VideoPlayer from 'react-video-js-player';
         // urlString = '/videos/bucket/'+videoName;
       // url = encodeURI(uri);
     player = {}
+
     state = {
         video: {
             // src: this.url,
-            src: 'https://zcw-cohort8zero.s3.amazonaws.com/videoapp/sora1.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220508T182219Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604799&X-Amz-Credential=AKIAUTLWJ537YFVAWF46%2F20220508%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=256e531a89a03143e89b4f2e79c25e4e2bceacadbe4029c31e96d95dffc548bf',
-
+            src: 'https://zcw-cohort8zero.s3.amazonaws.com/videoapp/sora.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220509T183032Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604799&X-Amz-Credential=AKIAUTLWJ537YFVAWF46%2F20220509%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=69c99954726330f49a4a5bc58f975fd236de3a010e615feb10d7ad2b8cc31428',
+            
             poster: 'https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg'
         }
     }
 
     onPlayerReady(player){
         this.player = player;
+        // go get the url that we need 
+        let resultUrl = "";
+        // assign the url we got from
+        this.state.video.src = resultUrl;
+        //get url from rest api
     }
 
     render() {
