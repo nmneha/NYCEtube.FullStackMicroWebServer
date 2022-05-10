@@ -17,7 +17,7 @@ export const Home = (ReactElement) => {
   const videosList = useAppSelector(state => state.videos.entities);
   const loading = useAppSelector(state => state.videos.loading);
   const dispatch = useAppDispatch();
-  const url = "'https://zcw-cohort8zero.s3.amazonaws.com/videoapp/sora1.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220508T182219Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604799&X-Amz-Credential=AKIAUTLWJ537YFVAWF46%2F20220508%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=256e531a89a03143e89b4f2e79c25e4e2bceacadbe4029c31e96d95dffc548bf'"
+  const url = 'https://zcw-cohort8zero.s3.amazonaws.com/videoapp/sora.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220509T183032Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604799&X-Amz-Credential=AKIAUTLWJ537YFVAWF46%2F20220509%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=69c99954726330f49a4a5bc58f975fd236de3a010e615feb10d7ad2b8cc31428';
   
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export const Home = (ReactElement) => {
       </Col> */}
 <div className="card-deck">
   <div className="card">
-    <VideoApp vid="hello" />
+    <VideoApp />
     <div className="card-body">
       <h5 className="card-title">video1</h5>
       <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -82,7 +82,7 @@ export const Home = (ReactElement) => {
           </div>
         )}
          <div>
-           <VideoApp/>
+           <VideoApp {url}/>
         </div>
       </Col>
     </Row>
