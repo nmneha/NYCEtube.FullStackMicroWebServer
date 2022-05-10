@@ -19,7 +19,7 @@ export const VideosDetail = (props: RouteComponentProps<{ id: string }>) => {
   const videosEntity = useAppSelector(state => state.videos.entity);
   return (
     <Row>
-      <VideoApp vid = {videosEntity.url} />
+      <VideoApp vid = {videosEntity} />
       <Col md="8">
         <h2 data-cy="videosDetailsHeading">Videos</h2>
         <dl className="jh-entity-details">
