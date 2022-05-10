@@ -4,9 +4,10 @@ import { Switch } from 'react-router-dom';
 import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 
 import Videos from './videos';
-import VideosDetail from './videos-detail';
+
 import VideosUpdate from './videos-update';
 import VideosDeleteDialog from './videos-delete-dialog';
+import VideosDetail from '../videos-user/videos-user-detail';
 
 const Routes = ({ match }) => (
   <>
