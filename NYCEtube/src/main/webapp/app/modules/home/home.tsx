@@ -39,7 +39,7 @@ export const Home = (ReactElement) => {
       </Col> */}
 <div className="card-deck">
   <div className="card">
-    <VideoApp />
+    <VideoApp vid = {url}/>
     <div className="card-body">
       <h5 className="card-title">video1</h5>
       <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -47,7 +47,7 @@ export const Home = (ReactElement) => {
     </div>
   </div>
   <div className="card">
-  <VideoApp/>
+  <VideoApp vid = {url} />
     <div className="card-body">
       <h5 className="card-title">Card title</h5>
       <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -55,7 +55,7 @@ export const Home = (ReactElement) => {
     </div>
   </div>
   <div className="card">
-  <VideoApp/>
+  <VideoApp  vid = {url}/>
     <div className="card-body">
       <h5 className="card-title">Card title</h5>
       <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -82,7 +82,7 @@ export const Home = (ReactElement) => {
           </div>
         )}
          <div>
-           <VideoApp {url}/>
+           <VideoApp vid = {url}/>
         </div>
       </Col>
     </Row>
